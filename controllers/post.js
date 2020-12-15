@@ -1,6 +1,8 @@
 /* eslint-disable no-underscore-dangle */
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
+const pluginId = require('../admin/src/pluginId');
+
 /**
  * Read the documentation (https://strapi.io/documentation/v3.x/concepts/controllers.html#core-controllers)
  * to customize this controller
@@ -16,12 +18,14 @@ module.exports = {
 	async find(ctx) {
 		let entities;
 		if (ctx.query._q) {
-			entities = await strapi.services.post.search(ctx.query);
+			entities = await strapi.plugins[pluginId].services.post.search(ctx.query);
 		} else {
-			entities = await strapi.services.post.find(ctx.query);
+			entities = await strapi.plugins[pluginId].services.post.find(ctx.query);
 		}
 
-		return entities.map((entity) => sanitizeEntity(entity, { model: strapi.models.post }));
+		return entities.map((entity) =>
+			sanitizeEntity(entity, { model: strapi.plugins[pluginId].models.post }),
+		);
 	},
 
 	/**
@@ -33,8 +37,8 @@ module.exports = {
 	async findOne(ctx) {
 		const { id } = ctx.params;
 
-		const entity = await strapi.services.post.findOne({ id });
-		return sanitizeEntity(entity, { model: strapi.models.post });
+		const entity = await strapi.plugins[pluginId].services.post.findOne({ id });
+		return sanitizeEntity(entity, { model: strapi.plugins[pluginId].models.post });
 	},
 
 	/**
@@ -45,9 +49,9 @@ module.exports = {
 
 	count(ctx) {
 		if (ctx.query._q) {
-			return strapi.services.post.countSearch(ctx.query);
+			return strapi.plugins[pluginId].services.post.countSearch(ctx.query);
 		}
-		return strapi.services.post.count(ctx.query);
+		return strapi.plugins[pluginId].services.post.count(ctx.query);
 	},
 
 	/**
@@ -60,11 +64,11 @@ module.exports = {
 		let entity;
 		if (ctx.is('multipart')) {
 			const { data, files } = parseMultipartData(ctx);
-			entity = await strapi.services.post.create(data, { files });
+			entity = await strapi.plugins[pluginId].services.post.create(data, { files });
 		} else {
-			entity = await strapi.services.post.create(ctx.request.body);
+			entity = await strapi.plugins[pluginId].services.post.create(ctx.request.body);
 		}
-		return sanitizeEntity(entity, { model: strapi.models.post });
+		return sanitizeEntity(entity, { model: strapi.plugins[pluginId].models.post });
 	},
 
 	/**
@@ -79,14 +83,14 @@ module.exports = {
 		let entity;
 		if (ctx.is('multipart')) {
 			const { data, files } = parseMultipartData(ctx);
-			entity = await strapi.services.post.update({ id }, data, {
+			entity = await strapi.plugins[pluginId].services.post.update({ id }, data, {
 				files,
 			});
 		} else {
-			entity = await strapi.services.post.update({ id }, ctx.request.body);
+			entity = await strapi.plugins[pluginId].services.post.update({ id }, ctx.request.body);
 		}
 
-		return sanitizeEntity(entity, { model: strapi.models.post });
+		return sanitizeEntity(entity, { model: strapi.plugins[pluginId].models.post });
 	},
 
 	/**
@@ -98,7 +102,7 @@ module.exports = {
 	async delete(ctx) {
 		const { id } = ctx.params;
 
-		const entity = await strapi.services.post.delete({ id });
-		return sanitizeEntity(entity, { model: strapi.models.post });
+		const entity = await strapi.plugins[pluginId].services.post.delete({ id });
+		return sanitizeEntity(entity, { model: strapi.plugins[pluginId].models.post });
 	},
 };

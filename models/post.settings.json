@@ -2,7 +2,8 @@
   "kind": "collectionType",
   "collectionName": "posts",
   "info": {
-    "name": "Post"
+    "name": "Post",
+    "description": ""
   },
   "options": {
     "increments": true,
@@ -10,10 +11,12 @@
     "draftAndPublish": true
   },
   "attributes": {
-    "Title": {
-      "type": "string"
+    "title": {
+      "type": "string",
+      "required": false,
+      "private": false
     },
-    "Content": {
+    "content": {
       "type": "richtext"
     }
   }
