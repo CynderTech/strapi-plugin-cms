@@ -1,0 +1,28 @@
+{
+  "name": "strapi-plugin-cms",
+  "version": "0.1.0",
+  "description": "Basic endpoints for a content management system.",
+  "strapi": {
+    "name": "CMS",
+    "icon": "plug",
+    "description": "Basic endpoints for a content management system."
+  },
+  "dependencies": {},
+  "author": {
+    "name": "Cynder",
+    "email": "hello@cynder.io",
+    "url": "https://www.cynder.io"
+  },
+  "maintainers": [
+    {
+      "name": "Cynder",
+      "email": "hello@cynder.io",
+      "url": "https://www.cynder.io"
+    }
+  ],
+  "engines": {
+    "node": ">=10.16.0 <=14.x.x",
+    "npm": ">=6.0.0"
+  },
+  "license": "MIT"
+}
