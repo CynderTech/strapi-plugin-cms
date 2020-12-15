@@ -1,0 +1,24 @@
+{
+  "kind": "collectionType",
+  "collectionName": "post_categories",
+  "info": {
+    "name": "Post Category",
+    "description": ""
+  },
+  "options": {
+    "increments": true,
+    "timestamps": true,
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "posts": {
+      "via": "post_categories",
+      "plugin": "cms",
+      "collection": "post"
+    }
+  }
+}

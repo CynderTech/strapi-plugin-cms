@@ -18,6 +18,12 @@
     },
     "content": {
       "type": "richtext"
+    },
+    "post_categories": {
+      "collection": "post-category",
+      "via": "posts",
+      "plugin": "cms",
+      "dominant": true
     }
   }
 }
