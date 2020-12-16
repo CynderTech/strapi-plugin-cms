@@ -22,7 +22,9 @@ module.exports = {
 	 */
 
 	findOne(params, populate) {
-		return strapi.query('post-category', pluginId).findOne(params, populate);
+		return strapi
+			.query('post-category', pluginId)
+			.findOne(params, populate);
 	},
 
 	/**
@@ -42,8 +44,13 @@ module.exports = {
 	 */
 
 	async create(data, { files } = {}) {
-		const validData = await strapi.entityValidator.validateEntity(strapi.models.post, data);
-		const entry = await strapi.query('post-category', pluginId).create(validData);
+		const validData = await strapi.entityValidator.validateEntity(
+			strapi.models.post,
+			data,
+		);
+		const entry = await strapi
+			.query('post-category', pluginId)
+			.create(validData);
 
 		if (files) {
 			// automatically uploads the files based on the entry and the model
@@ -69,7 +76,9 @@ module.exports = {
 			strapi.models.post,
 			data,
 		);
-		const entry = await strapi.query('post-category', pluginId).update(params, validData);
+		const entry = await strapi
+			.query('post-category', pluginId)
+			.update(params, validData);
 
 		if (files) {
 			// automatically uploads the files based on the entry and the model

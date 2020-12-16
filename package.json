@@ -12,7 +12,13 @@
     "lint:watch": "npm run lint -- --watch",
     "pretest": "npm run lint"
   },
-  "dependencies": {},
+  "dependencies": {
+    "prop-types": "^15.7.2",
+    "react": "^17.0.1",
+    "react-router-dom": "^5.2.0",
+    "strapi-helper-plugin": "^3.3.4",
+    "strapi-utils": "^3.3.4"
+  },
   "author": {
     "name": "Cynder",
     "email": "hello@cynder.io",

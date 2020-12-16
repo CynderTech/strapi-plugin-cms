@@ -4,10 +4,10 @@
  *
  */
 
-import React, { memo } from 'react';
+import { memo } from 'react';
 
 const HomePage = () => {
-  return null;
+	return null;
 };
 
 export default memo(HomePage);

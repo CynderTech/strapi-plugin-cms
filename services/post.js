@@ -42,7 +42,10 @@ module.exports = {
 	 */
 
 	async create(data, { files } = {}) {
-		const validData = await strapi.entityValidator.validateEntity(strapi.models.post, data);
+		const validData = await strapi.entityValidator.validateEntity(
+			strapi.models.post,
+			data,
+		);
 		const entry = await strapi.query('post', pluginId).create(validData);
 
 		if (files) {
@@ -69,7 +72,9 @@ module.exports = {
 			strapi.models.post,
 			data,
 		);
-		const entry = await strapi.query('post', pluginId).update(params, validData);
+		const entry = await strapi
+			.query('post', pluginId)
+			.update(params, validData);
 
 		if (files) {
 			// automatically uploads the files based on the entry and the model
