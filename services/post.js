@@ -42,8 +42,8 @@ module.exports = {
 	 */
 
 	async create(data, { files } = {}) {
-		const validData = await strapi.entityValidator.validateEntity(
-			strapi.models.post,
+		const validData = await strapi.entityValidator.validateEntityCreation(
+			strapi.plugins[pluginId].post,
 			data,
 		);
 		const entry = await strapi.query('post', pluginId).create(validData);
@@ -69,7 +69,7 @@ module.exports = {
 
 	async update(params, data, { files } = {}) {
 		const validData = await strapi.entityValidator.validateEntityUpdate(
-			strapi.models.post,
+			strapi.plugins[pluginId].post,
 			data,
 		);
 		const entry = await strapi
