@@ -1,0 +1,71 @@
+{
+  "kind": "collectionType",
+  "collectionName": "media_items",
+  "info": {
+    "name": "Media Item"
+  },
+  "options": {
+    "increments": true,
+    "timestamps": [
+      "createdAt",
+      "updatedAt"
+    ],
+    "draftAndPublish": true
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "maxLength": 255
+    },
+    "slug": {
+      "type": "uid",
+      "targetField": "title",
+      "required": true
+    },
+    "author": {
+      "plugin": "users-permissions",
+      "model": "user"
+    },
+    "firstName": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "lastName": {
+      "type": "string",
+      "maxLength": 255
+    },
+    "email": {
+      "type": "email",
+      "maxLength": 255
+    },
+    "category": {
+      "model": "category"
+    },
+    "excerpt": {
+      "type": "text"
+    },
+    "banner": {
+      "model": "file",
+      "via": "related",
+      "allowedTypes": [
+        "images"
+      ],
+      "plugin": "upload",
+      "required": false,
+      "pluginOptions": {}
+    },
+    "content": {
+      "type": "richtext",
+      "required": false
+    },
+    "contentType": {
+      "type": "enumeration",
+      "enum": [
+        "ARTICLE",
+        "PODCAST",
+        "VIDEO"
+      ]
+    }
+  }
+}
