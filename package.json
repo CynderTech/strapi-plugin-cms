@@ -8,18 +8,21 @@
     "description": "Basic endpoints for a content management system."
   },
   "scripts": {
+    "postinstall": "husky install",
     "lint": "esw",
     "lint:watch": "npm run lint -- --watch",
-    "pretest": "npm run lint"
+    "pretest": "npm run lint",
+    "dependencies:check": "npm-check -i ~*",
+    "dependencies:update": "npm-check -u"
   },
   "dependencies": {
-    "@buffetjs/custom": "^3.3.1",
+    "@buffetjs/custom": "^3.3.6",
     "prop-types": "^15.7.2",
-    "react": "^17.0.1",
+    "react": "^17.0.2",
     "react-router-dom": "^5.2.0",
-    "strapi-helper-plugin": "^3.3.4",
-    "strapi-utils": "^3.3.4",
-    "styled-components": "^5.2.1"
+    "strapi-helper-plugin": "^3.6.5",
+    "strapi-utils": "^3.6.5",
+    "styled-components": "^5.3.0"
   },
   "author": {
     "name": "Cynder",
@@ -39,28 +42,23 @@
   },
   "license": "MIT",
   "devDependencies": {
-    "@commitlint/cli": "^11.0.0",
-    "@commitlint/config-conventional": "^11.0.0",
+    "@commitlint/cli": "^12.1.4",
+    "@commitlint/config-conventional": "^12.1.4",
     "babel-eslint": "^10.1.0",
-    "eslint": "^7.15.0",
+    "eslint": "^7.30.0",
     "eslint-config-airbnb": "^18.2.1",
-    "eslint-config-prettier": "^7.0.0",
-    "eslint-plugin-import": "^2.22.1",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-import": "^2.23.4",
     "eslint-plugin-jsx-a11y": "^6.4.1",
-    "eslint-plugin-prettier": "^3.3.0",
-    "eslint-plugin-react": "^7.21.5",
+    "eslint-plugin-prettier": "^3.4.0",
+    "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
     "eslint-plugin-sort-destructure-keys": "^1.3.5",
     "eslint-watch": "^7.0.0",
-    "husky": "^4.3.6",
-    "lint-staged": "^10.5.3",
-    "prettier": "^2.2.1"
-  },
-  "husky": {
-    "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
-      "pre-commit": "lint-staged"
-    }
+    "husky": "^7.0.0",
+    "lint-staged": "^11.0.0",
+    "npm-check": "^5.9.2",
+    "prettier": "^2.3.2"
   },
   "lint-staged": {
     "*.js": [
