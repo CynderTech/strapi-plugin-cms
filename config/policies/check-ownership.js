@@ -4,12 +4,8 @@ const pluginId = require('../../admin/src/pluginId');
 
 module.exports = async (ctx, next) => {
 	const { id } = ctx.params;
-	const isAdminUser =
-		get(process, 'env.ADMIN_ROLE_WHITELIST', 'super_admin,admin').indexOf(
-			get(ctx, 'state.user.role.type'),
-		) !== -1;
 
-	if (isAdminUser) {
+	if (strapi.plugins[pluginId].services['media-item'].isAdminUser(ctx)) {
 		await next();
 	} else {
 		let entity;
