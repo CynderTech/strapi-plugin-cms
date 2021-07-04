@@ -1,5 +1,4 @@
 /* eslint-disable no-underscore-dangle */
-const { isNumber } = require('lodash');
 const { parseMultipartData, sanitizeEntity } = require('strapi-utils');
 
 const pluginId = require('../admin/src/pluginId');
@@ -25,7 +24,7 @@ module.exports = {
 		const { id } = ctx.params;
 		let entity;
 
-		if (isNumber(id)) {
+		if (!Number.isNaN(Number(id))) {
 			entity = await strapi.plugins[pluginId].services['media-item'].findOne({ id });
 		} else {
 			entity = await strapi.plugins[pluginId].services['media-item'].findOne({ slug: id });
