@@ -91,7 +91,9 @@
       "path": "/media-items",
       "handler": "media-item.create",
       "config": {
-        "policies": [],
+        "policies": [
+          "assign-author"
+        ],
         "prefix": ""
       }
     },

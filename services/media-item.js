@@ -1,3 +1,5 @@
+const { get } = require('lodash');
+
 const pluginId = require('../admin/src/pluginId');
 
 module.exports = {
@@ -74,5 +76,13 @@ module.exports = {
 				? strapi.plugins['users-permissions'].services.user.sanitizeForPublic(author)
 				: author,
 		};
+	},
+
+	isAdminUser(ctx) {
+		return (
+			get(process, 'env.ADMIN_ROLE_WHITELIST', 'super_admin,admin').indexOf(
+				get(ctx, 'state.user.role.type'),
+			) !== -1
+		);
 	},
 };
