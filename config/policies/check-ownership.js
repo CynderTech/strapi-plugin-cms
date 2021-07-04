@@ -24,7 +24,7 @@ module.exports = async (ctx, next) => {
 			if (get(ctx, 'state.user.id') === get(entity, 'author.id')) {
 				await next();
 			} else {
-				ctx.unauthorized();
+				ctx.forbidden();
 			}
 		}
 	}
