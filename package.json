@@ -8,7 +8,6 @@
     "description": "Basic endpoints for a content management system."
   },
   "scripts": {
-    "postinstall": "husky install",
     "lint": "esw",
     "lint:watch": "npm run lint -- --watch",
     "pretest": "npm run lint",
