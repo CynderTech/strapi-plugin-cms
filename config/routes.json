@@ -81,7 +81,6 @@
       "handler": "media-item.findOne",
       "config": {
         "policies": [
-          "check-ownership",
           "sanitize-user-for-public"
         ],
         "prefix": ""
