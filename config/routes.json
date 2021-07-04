@@ -81,6 +81,7 @@
       "handler": "media-item.findOne",
       "config": {
         "policies": [
+          "check-ownership",
           "sanitize-user-for-public"
         ],
         "prefix": ""
@@ -100,7 +101,9 @@
       "path": "/media-items/:id",
       "handler": "media-item.update",
       "config": {
-        "policies": [],
+        "policies": [
+          "check-ownership"
+        ],
         "prefix": ""
       }
     },
@@ -109,7 +112,9 @@
       "path": "/media-items/:id",
       "handler": "media-item.delete",
       "config": {
-        "policies": [],
+        "policies": [
+          "check-ownership"
+        ],
         "prefix": ""
       }
     }
