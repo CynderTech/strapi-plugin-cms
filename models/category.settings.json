@@ -25,6 +25,12 @@
     },
     "description": {
       "type": "text"
+    },
+    "priority": {
+      "type": "integer",
+      "default": 999,
+      "max": 999,
+      "min": 0
     }
   }
 }
